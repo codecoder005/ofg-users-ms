@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo "we are on pre-build stage."
+  build:
+    commands:
+      - echo "we are on build stage."
+      - mvn clean install
+  post_build:
+    commands:
+      - echo "we are on post-build stage."
+artifacts:
+  files:
+    - target/**
