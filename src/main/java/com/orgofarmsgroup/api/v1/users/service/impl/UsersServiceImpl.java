@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -54,5 +56,18 @@ public class UsersServiceImpl implements UsersService {
             userDto.setMessage("No such user found");
             return userDto;
         }
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        List<User> allUsers = new ArrayList<User>();
+        try{
+            this.usersRepository.findAll().forEach(user -> allUsers.add(user));
+        }catch (NoSuchElementException noSuchElementException){
+            LOGGER.info(noSuchElementException.getMessage());
+        }catch (IllegalStateException illegalStateException){
+            LOGGER.info(illegalStateException.getMessage());
+        }
+        return allUsers;
     }
 }

@@ -6,10 +6,15 @@ phases:
   build:
     commands:
       - echo "we are on build stage."
-      - mvn clean install
+      - mvn clean
   post_build:
     commands:
-      - echo "we are on post-build stage."
+      - echo we are on post-build stage.
+      - echo packaging war file
+      - mvn package
+      - echo moving war file from target to root directory.
+      - mv target/ofg-users-ms-1.0.0.war ofg-users-ms-1.0.0.war
+      - echo war moved successfully.
 artifacts:
   files:
-    - target/**
+    - ofg-users-ms-1.0.0.war

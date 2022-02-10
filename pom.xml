@@ -6,6 +6,7 @@
 
     <groupId>com.orgofarmsgroup</groupId>
     <artifactId>ofg-users-ms</artifactId>
+    <packaging>war</packaging>
     <version>1.0.0</version>
 
     <properties>
